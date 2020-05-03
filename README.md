@@ -45,8 +45,7 @@ Uncomment the block that's indicated for uncommenting. Comment the following blo
 
 # Known present difficulties
 Loading very large files in a pandas object requires a lot of RAM.
-A better approach would be to parse the input files row by row. A beginning for this kind of an approach is in the notes folder, named csvmap.
-The notes are incomplete and it's not a working program, but it illustrates how we'd use row-parsing instead of file loading and subsequent parsing.
+A better approach would be to parse the input files row by row.
 
 # Advantages
 1. The user-developer of this framework doesn't need to have any pandas knowledge.
