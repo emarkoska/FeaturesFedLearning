@@ -3,7 +3,7 @@ Elena Markoska
 
 # Introduction
 The framework uses a domain specific language (DSL) which has been implemented as a subset of Python.
-A user-developer creates a config file using this DSL which uses pre-made Transformer functionality.
+A user-developer creates a config file using this DSL which uses pre-made functionality for modifying dataset columns and preprocessing.
 The user-developer is able to specify preprocessing methods, input and output files, supported changes on columns
 using lambda expressions.
 
