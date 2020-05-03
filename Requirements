@@ -1,0 +1,7 @@
+Python 3
+
+pandas
+    pip install pandas
+
+numpy
+    pip install numpy

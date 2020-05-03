@@ -1,0 +1,119 @@
+#!/usr/bin/python3
+#Encoding=UTF-8
+##############################################################################
+'''csvmap - Use a config file in the csvmap DSL to filter and process one CSV stream into another
+
+Usage: csvmap CONFIG-FILE
+
+(Version %s - GPLv3)'''
+__version__ = '1.0'
+
+##############################################################################
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>
+##############################################################################
+
+
+
+
+##############################################################################
+### IMPORTS
+
+import sys
+import pandas
+from pprint import pprint as pr
+
+
+
+
+##############################################################################
+### UTILITY CLASSES
+
+
+class Read(object):
+    @staticmethod
+    def CSV(filename):
+        return pandas.read_csv(filename)
+
+    @staticmethod
+    def JSON(filename):
+        #...............
+        return pandas.who_knows_what(filename)
+
+
+
+class Write(object):
+    @staticmethod
+    def CSV(filename):
+        return pandas.read_csv(filename)
+
+    @staticmethod
+    def JSON(filename):
+        #...............
+        #...............
+        #...............
+        return pandas.who_knows_what(filename)
+
+
+
+class pp(object):
+    @staticmethod
+    def drop_autocorrelated(d, degree):
+        TODO
+
+
+
+
+##############################################################################
+### CSVMAP FUNCTIONS
+
+def CSVMap(config):
+    '''Implement the main CSVMap behaviour given a configuration in Python'''
+    env = {
+        'pp': pp,
+    }
+    config = eval(config, env)
+
+    # Version checking
+    if not 'csvmap' in config:
+        raise SyntaxError("This doesn't look like csvmap format")
+    if config['csvmap'] > 1:
+        raise ValueError("This is for a newer csvmap")
+
+    # Load input
+    d = getattr(Read, config['input'][0])(config['input'][1])
+
+    # Run all preprocess
+    for i in config['preprocess']:
+        i(d)
+
+
+
+
+##############################################################################
+### MAIN
+
+def __main__():
+    if len(sys.argv) != 2 or sys.argv[1] == '--help':
+        print(__doc__ % __version__)
+        return
+
+    try:
+        CSVMap(open(sys.argv[1], 'r').read())
+    except Exception as e:
+        raise
+        print(sys.argv[0] + ': ' + e.__class__.__name__ + ': ' + str(e), file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == '__main__':
+    __main__()
