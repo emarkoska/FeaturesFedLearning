@@ -7,7 +7,7 @@ A user-developer creates a config file using this DSL which uses pre-made functi
 The user-developer is able to specify preprocessing methods, input and output files, supported changes on columns
 using lambda expressions.
 
-Refer to the Running section for a quick demo
+Refer to the Running section for a quick demo.
 
 # Exlanation of modules
 The framework consists of four key modules, developed for with flexibility, modularity, and maintainability in mind.
@@ -32,9 +32,9 @@ Parser.py uses eval() to parse the specified config file.
 After this parsing, it opens the input file, runs the pre-processing and transformation functions, and makes an output file.
 
 # Running
-Unpack the tar.gz file.
-Open cmd. Navigate to the project directory
-Run 'Parser.py Configuration/test01.config'
+Clone the repo (or unpack the tar.gz file).
+Open cmd. Navigate to the project directory and
+run 'Parser.py Configuration/test01.config'
 
 An output file should be generated titled out.csv - Check it out. Enjoy!
 
